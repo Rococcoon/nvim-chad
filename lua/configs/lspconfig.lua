@@ -8,9 +8,6 @@ local servers = {
   -- css
 	"cssls",
 
-  -- cpp
-  "clangd",
-
   -- golang
   "gopls",
 
@@ -31,6 +28,20 @@ for _, lsp in ipairs(servers) do
 		capabilities = nvlsp.capabilities,
 	})
 end
+
+-- Configure Clangd with OpenCV Include Paths
+lspconfig.clangd.setup({
+  -- Point to where compile_commands.json is generated
+  cmd = { "clangd", "--compile-commands-dir=./" },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
+  root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+
+  -- Explicitly add include paths for OpenCV
+  include = { "/usr/include/opencv4" }
+})
 
 -- configuring single server, example: typescript
 -- lspconfig.ts_ls.setup {
