@@ -3,7 +3,7 @@
 require('keymaps.motions')
 require('keymaps.navigation')
 require('keymaps.commands')
--- require('keymaps.lsp')
+require('keymaps.lsp')
 require('keymaps.formatter')
 require('keymaps.pluggins')
 -- require('keymaps.search')

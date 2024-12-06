@@ -1,8 +1,8 @@
 -- Define a module table to hold the keymap functions
-local M = {}
+-- local M = {}
 
 -- Function to set up LSP-related keymaps for the buffer
-M.setup_lsp_keymaps = function(bufnr)
+-- M.setup_lsp_keymaps = function(bufnr)
   -- Keymap options (noremap and silent) specific to the buffer
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -39,11 +39,27 @@ M.setup_lsp_keymaps = function(bufnr)
   -- Show diagnostics in the location list (normal mode)
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
 
+  -- Map <leader>d to open LSP diagnostics in Telescope
+  vim.keymap.set(
+    'n',
+    '<leader>td',
+    ':Telescope diagnostics<CR>',
+    { noremap = true, silent = true }
+  )
+
+  -- Map <leader>l to show diagnostics in the location list
+  vim.keymap.set(
+    'n',
+    '<leader>zd',
+    ':lua vim.diagnostic.setloclist()<CR>',
+    { noremap = true, silent = true }
+  )
+
   -- Format the current buffer (normal mode)
-  vim.keymap.set('n', '<leader>f', function()
+  vim.keymap.set('n', '<leader>zf', function()
     vim.lsp.buf.format({ async = true })
   end, opts)
-end
+-- end
 
 -- Return the module table
-return M
+--return M
