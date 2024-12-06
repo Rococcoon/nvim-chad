@@ -6,23 +6,19 @@ local lspconfig = require("lspconfig")
 -- EXAMPLE
 local servers = {
   -- css
-	"css-lsp",
+	"cssls",
 
   -- cpp
   "clangd",
 
   -- golang
-  "gofumpt",
   "gopls",
 
   -- html
-	"html-lsp",
-
-  -- htmx
-  "htmx-lsp",
+	"html",
 
   -- lua
-  "lua-language-server",
+  "lua_ls",
 
 }
 local nvlsp = require("nvchad.configs.lspconfig")
