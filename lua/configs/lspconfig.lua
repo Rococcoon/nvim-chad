@@ -33,14 +33,28 @@ end
 lspconfig.clangd.setup({
   -- Point to where compile_commands.json is generated
   cmd = { "clangd", "--compile-commands-dir=./" },
-  filetypes = { "c", "cpp", "objc", "objcpp" },
+  filetypes = {
+    "c",
+    "cpp",
+    "h",
+    "hpp",
+    "objc",
+    "objcpp"
+  },
   root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 
   -- Explicitly add include paths for OpenCV
-  include = { "/usr/include/opencv4" }
+  settings = {
+    clangd = {
+      includePath = {
+        "/usr/include/opencv4",
+        vim.fn.expand("~") .. "/raylib/src",
+      },
+    },
+  }
 })
 
 -- configuring single server, example: typescript
