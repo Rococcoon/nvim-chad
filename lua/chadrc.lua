@@ -9,7 +9,7 @@ M.base46 = {
 	theme = "rosepine",
 
 	-- hl_override = {
-	-- 	Comment = { italic = true },
+	-- Comment = { italic = true },
 	-- 	["@comment"] = { italic = true },
 	-- },
 }
