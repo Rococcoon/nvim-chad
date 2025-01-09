@@ -63,3 +63,19 @@ lspconfig.clangd.setup({
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
+
+-- Extend gopls to support .templ files
+lspconfig.gopls.setup({
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "go", "templ" }, -- Add `templ` to supported filetypes
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
+  },
+})
