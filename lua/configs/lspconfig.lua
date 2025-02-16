@@ -14,8 +14,14 @@ local servers = {
   -- html
 	"html",
 
+  -- javascript
+	"ts_ls",
+
   -- lua
   "lua_ls",
+
+  -- python
+  "pyright",
 
 }
 local nvlsp = require("nvchad.configs.lspconfig")
@@ -58,11 +64,11 @@ lspconfig.clangd.setup({
 })
 
 -- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
+lspconfig.ts_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
 
 -- Extend gopls to support .templ files
 lspconfig.gopls.setup({
@@ -76,6 +82,22 @@ lspconfig.gopls.setup({
         unusedparams = true,
       },
       staticcheck = true,
+    },
+  },
+})
+
+-- Configure Pyright (Python LSP)
+lspconfig.pyright.setup({
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "basic",
+        autoImportCompletions = true,
+        useLibraryCodeForTypes = true,
+      },
     },
   },
 })
