@@ -2,10 +2,11 @@ local options = {
 	formatters_by_ft = {
 		lua = { "stylua" },
 		go = { "gofmt" },
-		javascript = { "semistandard" },
-		javascriptreact = { "semistandard" },
-		typescript = { "semistandard" },
-		typescriptreact = { "semistandard" },
+		javascript = { "prettier" },
+		typescript = { "prettier" },
+		html = { "prettier" },
+		css = { "prettier" },
+		json = { "prettier" },
 	},
 
 	format_on_save = {
