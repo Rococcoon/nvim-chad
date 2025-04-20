@@ -1,1 +1,1 @@
-require('custom.togglecmp')
+require("custom.togglecmp")

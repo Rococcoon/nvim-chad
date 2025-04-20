@@ -14,31 +14,31 @@ vim.keymap.set("n", "<leader>wv", ":vsplit<CR>", { noremap = true, silent = true
 
 -- Window navigation
 vim.keymap.set("n", "<leader>wj", "<C-w>h", {
-  noremap = true,
-  silent = true,
-  desc = "navigate window left"
+	noremap = true,
+	silent = true,
+	desc = "navigate window left",
 })
 vim.keymap.set("n", "<leader>wk", "<C-w>j", {
-  noremap = true,
-  silent = true,
-  desc = "navigate window down"
+	noremap = true,
+	silent = true,
+	desc = "navigate window down",
 })
 vim.keymap.set("n", "<leader>wl", "<C-w>k", {
-  noremap = true,
-  silent = true,
-  desc = "navigate window up"
+	noremap = true,
+	silent = true,
+	desc = "navigate window up",
 })
 vim.keymap.set("n", "<leader>w;", "<C-w>l", {
-  noremap = true,
-  silent = true,
-  desc = "navigatwe window right"
+	noremap = true,
+	silent = true,
+	desc = "navigatwe window right",
 })
 
 -- Close Window
 vim.keymap.set("n", "<leader>wx", ":q<CR>", {
-  noremap = true,
-  silent = true,
-  desc = "exit window"
+	noremap = true,
+	silent = true,
+	desc = "exit window",
 })
 
 -- map keys for numeric navigation between tabs

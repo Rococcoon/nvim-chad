@@ -5,24 +5,23 @@ local lspconfig = require("lspconfig")
 
 -- EXAMPLE
 local servers = {
-  -- css
+	-- css
 	"cssls",
 
-  -- golang
-  "gopls",
+	-- golang
+	"gopls",
 
-  -- html
+	-- html
 	"html",
 
-  -- javascript
+	-- javascript
 	"ts_ls",
 
-  -- lua
-  "lua_ls",
+	-- lua
+	"lua_ls",
 
-  -- python
-  "pyright",
-
+	-- python
+	"pyright",
 }
 local nvlsp = require("nvchad.configs.lspconfig")
 
@@ -37,67 +36,67 @@ end
 
 -- Configure Clangd with OpenCV Include Paths
 lspconfig.clangd.setup({
-  -- Point to where compile_commands.json is generated
-  cmd = { "clangd", "--compile-commands-dir=./" },
-  filetypes = {
-    "c",
-    "cpp",
-    "h",
-    "hpp",
-    "objc",
-    "objcpp"
-  },
-  root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
+	-- Point to where compile_commands.json is generated
+	cmd = { "clangd", "--compile-commands-dir=./" },
+	filetypes = {
+		"c",
+		"cpp",
+		"h",
+		"hpp",
+		"objc",
+		"objcpp",
+	},
+	root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
+	on_attach = nvlsp.on_attach,
+	on_init = nvlsp.on_init,
+	capabilities = nvlsp.capabilities,
 
-  -- Explicitly add include paths for OpenCV
-  settings = {
-    clangd = {
-      includePath = {
-        "/usr/include/opencv4",
-        vim.fn.expand("~") .. "/raylib/src",
-      },
-    },
-  }
+	-- Explicitly add include paths for OpenCV
+	settings = {
+		clangd = {
+			includePath = {
+				"/usr/include/opencv4",
+				vim.fn.expand("~") .. "/raylib/src",
+			},
+		},
+	},
 })
 
 -- configuring single server, example: typescript
-lspconfig.ts_ls.setup {
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
-}
+lspconfig.ts_ls.setup({
+	on_attach = nvlsp.on_attach,
+	on_init = nvlsp.on_init,
+	capabilities = nvlsp.capabilities,
+})
 
 -- Extend gopls to support .templ files
 lspconfig.gopls.setup({
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
-  filetypes = { "go", "templ" }, -- Add `templ` to supported filetypes
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
-    },
-  },
+	on_attach = nvlsp.on_attach,
+	on_init = nvlsp.on_init,
+	capabilities = nvlsp.capabilities,
+	filetypes = { "go", "templ" }, -- Add `templ` to supported filetypes
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
 })
 
 -- Configure Pyright (Python LSP)
 lspconfig.pyright.setup({
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
-  settings = {
-    python = {
-      analysis = {
-        typeCheckingMode = "basic",
-        autoImportCompletions = true,
-        useLibraryCodeForTypes = true,
-      },
-    },
-  },
+	on_attach = nvlsp.on_attach,
+	on_init = nvlsp.on_init,
+	capabilities = nvlsp.capabilities,
+	settings = {
+		python = {
+			analysis = {
+				typeCheckingMode = "basic",
+				autoImportCompletions = true,
+				useLibraryCodeForTypes = true,
+			},
+		},
+	},
 })

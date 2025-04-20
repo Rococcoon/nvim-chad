@@ -1,4 +1,4 @@
-require "nvchad.options"
+require("nvchad.options")
 
 -- add yours here!
 
@@ -26,7 +26,7 @@ opt.hlsearch = false
 opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
-opt.colorcolumn = '80'
+opt.colorcolumn = "80"
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.scrolloff = 11
@@ -64,21 +64,21 @@ vim.cmd([[
 ]])
 
 function MinimalViewportPadding()
-  local scrolloff = vim.o.scrolloff
-  local win_height = vim.fn.winheight(0)
-  local buf_line_count = vim.fn.line('$')
-  local cursor_line = vim.fn.line('.')
+	local scrolloff = vim.o.scrolloff
+	local win_height = vim.fn.winheight(0)
+	local buf_line_count = vim.fn.line("$")
+	local cursor_line = vim.fn.line(".")
 
-  -- Calculate the number of visible lines below the cursor
-  local lines_below = buf_line_count - cursor_line
-  if lines_below < scrolloff then
-    -- Reduce padding dynamically based on remaining lines
-    local dynamic_padding = math.min(scrolloff, scrolloff - lines_below)
-    local current_topline = vim.fn.line('w0')
-    local target_topline = math.max(1, buf_line_count - win_height + dynamic_padding)
+	-- Calculate the number of visible lines below the cursor
+	local lines_below = buf_line_count - cursor_line
+	if lines_below < scrolloff then
+		-- Reduce padding dynamically based on remaining lines
+		local dynamic_padding = math.min(scrolloff, scrolloff - lines_below)
+		local current_topline = vim.fn.line("w0")
+		local target_topline = math.max(1, buf_line_count - win_height + dynamic_padding)
 
-    if current_topline ~= target_topline then
-      vim.fn.winrestview({ topline = target_topline })
-    end
-  end
+		if current_topline ~= target_topline then
+			vim.fn.winrestview({ topline = target_topline })
+		end
+	end
 end

@@ -1,5 +1,5 @@
-require "nvchad.mappings"
-require "keymaps"
+require("nvchad.mappings")
+require("keymaps")
 
 -- add yours here
 
