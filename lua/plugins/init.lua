@@ -45,6 +45,7 @@ return {
 				"go",
 				"html",
 				"javascript",
+				"java",
 				"lua",
 				"typescript",
 				"vim",

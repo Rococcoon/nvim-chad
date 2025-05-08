@@ -22,6 +22,9 @@ local servers = {
 
 	-- python
 	"pyright",
+
+	-- java
+	"jdtls",
 }
 local nvlsp = require("nvchad.configs.lspconfig")
 
@@ -99,4 +102,14 @@ lspconfig.pyright.setup({
 			},
 		},
 	},
+})
+
+-- configure jdtls for java
+lspconfig.jdtls.setup({
+	on_attach = nvlsp.on_attach,
+	on_init = nvlsp.on_init,
+	capabilities = nvlsp.capabilities,
+	filetypes = { "java" },
+	settings = {},
+	root_dir = lspconfig.util.root_pattern(".git", "main.java"),
 })
