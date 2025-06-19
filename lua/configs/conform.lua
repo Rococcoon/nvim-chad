@@ -7,6 +7,7 @@ local options = {
 		html = { "prettier" },
 		css = { "prettier" },
 		json = { "prettier" },
+		markdown = { "prettier" },
 	},
 
 	format_on_save = {

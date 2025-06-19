@@ -14,17 +14,20 @@ local servers = {
 	-- html
 	"html",
 
+	-- java
+	"jdtls",
+
 	-- javascript
 	"ts_ls",
 
 	-- lua
 	"lua_ls",
 
+	-- markdown
+	"marksman",
+
 	-- python
 	"pyright",
-
-	-- java
-	"jdtls",
 }
 local nvlsp = require("nvchad.configs.lspconfig")
 
@@ -112,4 +115,14 @@ lspconfig.jdtls.setup({
 	filetypes = { "java" },
 	settings = {},
 	root_dir = lspconfig.util.root_pattern(".git", "main.java"),
+})
+
+-- configure marksman for java
+lspconfig.marksman.setup({
+	on_attach = nvlsp.on_attach,
+	on_init = nvlsp.on_init,
+	capabilities = nvlsp.capabilities,
+	filetypes = { "md" },
+	settings = {},
+	-- root_dir = lspconfig.util.root_pattern(""),
 })
