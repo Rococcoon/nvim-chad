@@ -25,6 +25,7 @@ local servers = {
 
 	-- markdown
 	"marksman",
+	-- "vale_ls",
 
 	-- python
 	"pyright",
@@ -91,6 +92,26 @@ lspconfig.gopls.setup({
 	},
 })
 
+-- configure jdtls for java
+lspconfig.jdtls.setup({
+	on_attach = nvlsp.on_attach,
+	on_init = nvlsp.on_init,
+	capabilities = nvlsp.capabilities,
+	filetypes = { "java" },
+	settings = {},
+	root_dir = lspconfig.util.root_pattern(".git", "main.java", "pom.xml"),
+})
+
+-- configure marksman for markdown
+lspconfig.marksman.setup({
+	on_attach = nvlsp.on_attach,
+	on_init = nvlsp.on_init,
+	capabilities = nvlsp.capabilities,
+	filetypes = { "md" },
+	settings = {},
+	root_dir = lspconfig.util.root_pattern(""),
+})
+
 -- Configure Pyright (Python LSP)
 lspconfig.pyright.setup({
 	on_attach = nvlsp.on_attach,
@@ -107,22 +128,12 @@ lspconfig.pyright.setup({
 	},
 })
 
--- configure jdtls for java
-lspconfig.jdtls.setup({
-	on_attach = nvlsp.on_attach,
-	on_init = nvlsp.on_init,
-	capabilities = nvlsp.capabilities,
-	filetypes = { "java" },
-	settings = {},
-	root_dir = lspconfig.util.root_pattern(".git", "main.java"),
-})
-
--- configure marksman for java
-lspconfig.marksman.setup({
-	on_attach = nvlsp.on_attach,
-	on_init = nvlsp.on_init,
-	capabilities = nvlsp.capabilities,
-	filetypes = { "md" },
-	settings = {},
-	-- root_dir = lspconfig.util.root_pattern(""),
-})
+-- -- configure vale for markdown
+-- lspconfig.vale_ls.setup({
+-- 	on_attach = nvlsp.on_attach,
+-- 	on_init = nvlsp.on_init,
+-- 	capabilities = nvlsp.capabilities,
+-- 	filetypes = { "md" },
+-- 	settings = {},
+-- 	root_dir = lspconfig.util.root_pattern(""),
+-- })
