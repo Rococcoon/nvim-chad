@@ -98,8 +98,25 @@ lspconfig.jdtls.setup({
 	on_init = nvlsp.on_init,
 	capabilities = nvlsp.capabilities,
 	filetypes = { "java" },
-	settings = {},
-	root_dir = lspconfig.util.root_pattern(".git", "main.java", "pom.xml"),
+	settings = {
+		java = {
+			home = "/opt/jdk-24.0.1/bin/java",
+			project = {},
+			imports = {
+				gradle = {
+					wrapper = {
+						checksums = {
+							{
+								sha256 = "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+								allowed = true,
+							},
+						},
+					},
+				},
+			},
+		},
+	},
+	root_dir = lspconfig.util.root_pattern("settings.gradle.kts", "build.gradle.kts", "gradlew", ".git"),
 })
 
 -- configure marksman for markdown
