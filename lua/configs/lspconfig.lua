@@ -24,7 +24,8 @@ local servers = {
 	"lua_ls",
 
 	-- markdown
-	"marksman",
+	"ltex",
+	-- "marksman",
 	-- "vale_ls",
 
 	-- python
@@ -120,14 +121,21 @@ lspconfig.jdtls.setup({
 })
 
 -- configure marksman for markdown
-lspconfig.marksman.setup({
-	on_attach = nvlsp.on_attach,
-	on_init = nvlsp.on_init,
-	capabilities = nvlsp.capabilities,
-	filetypes = { "md" },
-	settings = {},
-	root_dir = lspconfig.util.root_pattern(""),
-})
+-- lspconfig.marksman.setup({
+-- 	on_attach = nvlsp.on_attach,
+-- 	on_init = nvlsp.on_init,
+-- 	capabilities = nvlsp.capabilities,
+-- 	filetypes = { "md" },
+-- 	settings = {
+-- 		format = {
+-- 			indent_opts = {
+-- 				tab_size = 2,
+-- 				use_tabs = false,
+-- 			},
+-- 		},
+-- 	},
+-- 	root_dir = lspconfig.util.root_pattern(""),
+-- })
 
 -- Configure Pyright (Python LSP)
 lspconfig.pyright.setup({
@@ -154,3 +162,11 @@ lspconfig.pyright.setup({
 -- 	settings = {},
 -- 	root_dir = lspconfig.util.root_pattern(""),
 -- })
+
+-- LTeX Language Server+
+lspconfig.ltex.setup({
+	on_attach = nvlsp.on_attach,
+	on_init = nvlsp.on_init,
+	capabilities = nvlsp.capabilities,
+	cmd = { "ltex-ls-plus" },
+})

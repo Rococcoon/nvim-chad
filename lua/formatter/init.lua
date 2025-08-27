@@ -1,2 +1,2 @@
-require("formatter.stylua")
+-- require("formatter.stylua")
 require("formatter.prettier")
