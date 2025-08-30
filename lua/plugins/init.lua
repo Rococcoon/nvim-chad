@@ -36,6 +36,18 @@ return {
 	},
 
 	{
+		"nvim-tree/nvim-tree.lua",
+		opts = {
+			git = {
+				ignore = false, -- This will show ignored and untracked files
+			},
+		},
+		dependencies = {
+			"nvim-tree/nvim-web-devicons", -- For file icons
+		},
+	},
+
+	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = {
